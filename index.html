@@ -1,0 +1,194 @@
+<!Doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Форми реєстрації і редагування профілю</title>
+		<style type="text/css">
+			* {box-sizing: border-box;}
+			.transparent {
+			  position: relative;
+			  max-width: 500px;
+			  padding: 60px 50px;
+			  margin: 50px auto 0;
+			  background-image: url(https://html5book.ru/wp-content/uploads/2017/01/photo-roses.jpg);
+			  background-size: cover;
+			}
+			.transparent:before {
+			  content: "";
+			  position: absolute;
+			  top: 0;
+			  left: 0;
+			  right: 0;
+			  bottom: 0;
+			  background: linear-gradient(to right bottom,rgba(43, 44, 78, .5),rgba(104, 22, 96, .5));
+			}
+			.form-inner {position: relative;}
+			.form-inner h1 {
+			  position: relative;
+			  margin: 0 0 30px;
+			  color: white;
+			  font-family: 'Roboto', sans-serif;
+			  font-weight: 300;
+			  font-size: 26px;
+			  text-transform: uppercase;
+			}
+			.form-inner h1:after {
+			  content: "";
+			  position :absolute;
+			  left: 0;
+			  bottom: -6px;
+			  height: 2px;
+			  width: 220px;
+			  background: #1762EE;
+			}
+			.form-inner label {
+			  padding-left: 15px;
+			  font-family: 'Roboto', sans-serif;
+			  color: rgba(255,255,255,.6);
+			  text-transform: uppercase;
+			  font-size: 14px;
+			}
+			.form-inner input[type="text"], .form-inner input[type="password"], .form-inner input[type="email"], .form-inner input[type="submit"], .form-inner input[type="reset"], textarea, select {
+			  display: block;
+			  width: 100%;
+			  padding: 0 15px;
+			  margin: 7px 0 15px;
+			  border-width: 0;
+			  line-height: 40px;
+			  border-radius: 20px;
+			  border: 1px solid #84848433;
+			  color: white;
+			  background: rgba(255,255,255,.2);
+			  font-family: 'Roboto', sans-serif;
+			  outline: none;
+			}
+			.form-inner input[type="text"]:focus, .form-inner input[type="password"]:focus, .form-inner input[type="email"]:focus, .form-inner input[type="submit"]:focus, .form-inner input[type="reset"]:focus, textarea:focus, select:focus {
+				border: 1px solid #ffffff33;
+			}
+			.form-inner input[type="submit"], .form-inner input[type="reset"] {background: #1762EE;}
+			.form-inner input[type="checkbox"], .form-inner input[type="radio"], .form-inner input[type="file"], select {margin: 7px 0 15px;}
+			::placeholder {
+			  color: white;
+			}
+			select {color: black;}
+			.form-inner input[type="checkbox"] {margin-left:15px;}
+			#login, #pass {width: 70%;}
+			#fantastyka, #boyovyk, #pryhoda, #melodrama {margin-bottom: 5px;}
+		</style>
+	</head>	
+	<body>
+        <form class="transparent" action="/echo" method="post">
+			<div class="form-inner">
+				<h1>Реєстрація</h1>
+				<label for="login"><b>Ваш логін (e-mail):</b></label><br>
+				<input type="text" id="login"><br/>
+				<label for="pass"><b>Пароль:</b></label><br/>
+				<input type="password" id="pass"><br/>
+				<label for="about"><b>Інформація про себе:</b></label><br>
+				<textarea rows="4" cols="32" id="about"></textarea><br/>
+				<input type="checkbox" id="subscribe" checked>
+				<label for="subscribe"><b>Підписатись на розсилку</b></label><br>
+				<input type="submit" value="Зареєструватися"><br>
+			</div>
+        </form><br>
+		<hr>
+        <form class="transparent" action="/echo" method="post" entype="multipart/form-data">
+			<div class="form-inner">
+				<h1>Профіль</h1>
+				<label><b>Ваша стать:</b></label><br>
+				<label for="male">Чоловіча</label>
+				<input type="radio" name="sex" id="male" value="sex1">
+				<label for="female">Жіноча</label>
+				<input type="radio" name="sex" id="female" value="sex2" checked><br/>
+				<label><b>Місяць і рік народження:</b></label><br>
+				<select name="months">
+					<option>Січень</option>
+					<option>Лютий</option>
+					<option>Березень</option>
+					<option>Квітень</option>
+					<option>Травень</option>
+					<option>Червень</option>
+					<option>Липень</option>
+					<option>Серпень</option>
+					<option>Вересень</option>
+					<option>Жовтень</option>
+					<option>Листопад</option>
+					<option>Грудень</option>
+				</select>
+				<select name="years">
+					<option>1989</option>
+					<option>1990</option>
+					<option>1991</option>
+					<option>1992</option>
+					<option>1993</option>
+					<option>1994</option>
+					<option>1995</option>
+					<option>1996</option>
+					<option>1997</option>
+					<option>1998</option>
+					<option>1999</option>
+					<option>2000</option>
+				</select><br/>
+				<label for="tech"><b>Знайомі технології:</b></label><br>
+				<select name="language[]" rows="4" multiple id="tech" >
+				   <option>HTML</option>
+				   <option selected>CSS</option>
+				   <option>JavaScript</option>
+				   <option>PHP</option>
+				</select><br/>
+				<label for="file"><b>Завантажити фотографію:</b></label><br>
+				<input type="file" id="file"><br>
+				<input type="submit" value="Зберегти">
+			</div>
+        </form><br>
+		<hr>
+		<form class="transparent" action="/echo" method="post">
+			<div class="form-inner">
+				<h1>Вподобання</h1>
+				<label for="pib"><b>П.І.Б.</b></label>
+				<input type="text" id="pib"><br>
+				<label><b>Ви:</b></label><br>
+				<label for="male2">Чоловік</label>
+				<input type="radio" name="sex" id="male2" value="sex">
+				<label for="female2">Жінка</label>
+				<input type="radio" name="sex" id="female2" value="sex"><br/><br>
+				<label><b>Який жанр фільмів вам подобається?</b></label><br>
+				<input type="checkbox" name="zhanr" id="fantastyka" value="zhanr1">
+				<label for="fantastyka">фантастика</label><br>
+				<input type="checkbox" name="zhanr" id="boyovyk" value="zhanr2">
+				<label for="boyovyk">бойовик</label><br>
+				<input type="checkbox" name="zhanr" id="pryhoda" value="zhanr3">
+				<label for="pryhoda">прогода</label><br>
+				<input type="checkbox" name="zhanr" id="melodrama" value="zhanr4">
+				<label for="melodrama">мелодрама</label><br>
+				<input type="checkbox" name="zhanr" id="documental" value="zhanr5">
+				<label for="documental">документальний</label><br><br>
+				<label><b>Які з цих акторів вам подобаються більше?</b></label><br>
+				<select name="actor[]" multiple>
+					<option>Бред Пітт</option>
+					<option>Вілл Сміт</option>
+					<option>Том Гарді</option>
+					<option>Двейн Джонсон</option>
+					<option>Бредлі Купер</option>
+					<option>Джордж Клуні</option>
+				</select><br><br>
+				<label><b>В якій країні ви мрієте побувати?</b></label><br>
+				<select name="contry">
+					<option>Італія</option>
+					<option>Франція</option>
+					<option>Німеччина</option>
+					<option>Іспанія</option>
+					<option>Сполучені Штати Америки</option>
+					<option>Росія</option>
+					<option>Португалія</option>
+					<option>Україна</option>
+					<option>Нідерланди</option>
+				</select><br><br>
+				<label for="email"><b>Ваш електронна адреса:</b></label><br>
+				<input type="email" size="30" id="email" placeholder="email@box.com"><br/>
+				<input type="submit" value="Відправити анкету">
+				<input type="reset" value="Відміна">
+			</div>
+		</form>
+	</body>
+</html>
